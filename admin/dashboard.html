@@ -1,0 +1,1750 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar Menu</title>
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/bootstrap-5.1.3/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="assets/jsgrid-1.5.3/jsgrid.min.css" />
+  <link type="text/css" rel="stylesheet" href="assets/jsgrid-1.5.3/jsgrid-theme.min.css" />
+  <link rel="stylesheet" href="assets/style/style.css">
+  <link rel="stylesheet" href="assets/style/notification.css">  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" ></script>
+  
+  
+
+  
+</head>
+
+<body class="dark-layout">
+
+  <header class="dz__header">
+    <div class="dz__header__container">
+      <span class="shrink-btn">
+          <i class="bx bx-menu"></i>
+      </span>
+      <h3 id="dashboardHeader">WORK PERMIT MANAGEMENT SYSTEM</h3>
+      <h6 >10MW COLOMBO WASTE-TO-ENERGY POWER PLANT</h2>
+
+      <div class="dz__header__group_right"> 
+          <img id="staffImage" alt="" class="dz__header__img">
+          <div class="dz__header__theme_selector dark-layout px-2" id="theme-selector"> 
+               <i class='bx bxs-moon'></i>
+          </div>  
+      </div>
+      <span class="dz__header__toggle" id="dz-header-toggle">
+          <i class="bx bx-menu"></i>
+      </span>
+  </div>
+  </header>
+
+  <nav id="dzNavBar">
+    <div class="sidebar-top">
+      <img src="assets/images/billlogo.png" class="logo" id="dzIcon" alt="">
+      <h3 class="dz__sidebar__title">ADMIN</h3>
+  </div>
+
+    <div>
+      <div class="dz__nav__list">
+        <dv class="dz__nav__items">
+          <div class="dz__nav__dropdown" id="appointmentOption">
+            <a href="#" class="dz__nav__link dz__nav__link_dd">
+              <i class="bi bi-calendar-check dz__nav__icon"></i>
+              <span class="dz__nav__name">WORK PERMITS</span>
+              <i class="bx bx-chevron-right dz__nav__dropdown-icon"></i>
+            </a>
+            <div class="dz__nav__dropdown-collapse" >
+              <div class="dz__nav__dropdown-content">
+                <a href="#" class="dz__nav__dropdown-item" >Create New Work Permit</a>
+                <a href="#" class="dz__nav__dropdown-item" id="receivedAppointmentOption">Received Work Permits</a>
+                <a href="#" class="dz__nav__dropdown-item">Approved Work Permits</a>
+              </div>
+            </div>
+          </div>
+          <div class="dz__nav__dropdown" >
+            <a href="#" class="dz__nav__link dz__nav__link_dd">
+              <i class="bi bi-clipboard2-check dz__nav__icon"></i>
+              <span class="dz__nav__name">PERMIT COMPLETION</span>
+              <i class="bx bx-chevron-right dz__nav__dropdown-icon"></i>
+            </a>
+            <div class="dz__nav__dropdown-collapse" >
+              <div class="dz__nav__dropdown-content">
+                <a href="#" class="dz__nav__dropdown-item" >Isolation Completion List</a>
+                <a href="#" class="dz__nav__dropdown-item" >Completion List By ECP</a>
+                <a href="#" class="dz__nav__dropdown-item">Completion List By SAP</a>
+                <a href="#" class="dz__nav__dropdown-item" >DeIsolated List By AP</a>
+              </div>
+            </div>
+          </div>
+          <div class="dz__nav__dropdown" id="jobLogOption">
+            <a href="#" class="dz__nav__link dz__nav__link_dd">
+              <i class="bi bi-chat-dots dz__nav__icon"></i>
+              <span class="dz__nav__name">JOB LOG</span>
+              <i class="bx bx-chevron-right dz__nav__dropdown-icon"></i>
+            </a>
+            <div class="dz__nav__dropdown-collapse">
+              <div class="dz__nav__dropdown-content">
+                <a href="#" class="dz__nav__dropdown-item">Completed Permit List</a>
+                <a href="#" class="dz__nav__dropdown-item">Rejected Permit List</a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="dz__nav__link" id="staffAccountOption">
+            <i class="bi bi-person dz__nav__icon"></i>
+            <span class="dz__nav__name">USER ACCOUNTS</span>
+          </a>
+          <div class="dz__nav__dropdown">
+            <a href="#" class="dz__nav__link dz__nav__link_dd">
+              <i class="bi bi-gear dz__nav__icon"></i>
+              <span class="dz__nav__name">SETTING</span>
+              <i class="bx bx-chevron-right dz__nav__dropdown-icon"></i>
+            </a>
+            <div class="dz__nav__dropdown-collapse">
+              <div class="dz__nav__dropdown-content">
+                <a href="#" class="dz__nav__dropdown-item">Edit Profile</a>
+                <a href="#" class="dz__nav__dropdown-item">Change Password</a>
+                <a href="#" class="dz__nav__dropdown-item">Log Out</a>
+              </div>
+            </div>
+          </div>
+        </dv>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <a href="#" class="log-out">
+          <i class='bx bx-log-out'></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+<!-- Main content for admin dashboard page -->
+  <main class="dz__main" id="adminDashBoard">
+    <div class="container-fluid my-2">
+     <!--<h2>DASHBOARD</h2>-->
+    <div class="row">
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card card-custom border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-uppercase total-users">
+                                Total Registered Users</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800 custom-font-size" id="staffCount">23</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bx bxs-user bx-lg text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6 mb-4">
+          <div class="card card-custom border-left-success shadow h-100 py-2">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-uppercase total-users">
+                           Total Completed Work Permits</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800 custom-font-size" id="completedWorkPermitCount">1367</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="bx bx-check-double bx-lg text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+       <div class="col-xl-4 col-md-6 mb-4">
+          <div class="card card-custom border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-uppercase total-users">
+                              Total Rejected Work Permits</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800 custom-font-size" id="rejectedWorkPermitCount">8</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="bx bxs-x-circle bx-lg text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>  
+      <div class="row">
+          <div class="col-12 mb-4">
+              <div class="card card-custom shadow">
+                <div class="card-body">
+                    <h5 class="text-uppercase mb-3">Work Permits Summary</h5>
+                    <canvas id="appointmentChart" height="95"></canvas>
+                </div>
+              </div>
+          </div>
+      </div> 
+  </main>
+
+  <!--------------------------------------------------------------------------------------------------------------------------------->
+
+   <!--------------------------------------------------------------------------------------------------------------------------------->
+
+  <!-- Main content for staff accounts handling page -->
+  <main class="dz__main" id="staffAccountHandling" style="display: none;">
+    <div class="container-fluid my-2">
+
+      <div class="card card-custom">
+        <div class="card-header">
+          <h3 class="card-title">Add New Staff Account</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-lg-8 col-xs-12">
+              <form method="POST" class="row g-2" id="memberForm"
+                data-toggle="validator" novalidate="true">
+                <div class="col-md-6">
+                  <label for="staffEmail" class="form-label">Staff Email</label>
+                  <input type="email" class="form-control" id="staffEmail" placeholder="">
+                </div>
+                <div class="col-md-6">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="staffPassword" placeholder="">
+                </div>
+                <div class="col-md-6">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="staffFirstName" placeholder="">
+                </div>
+                <div class="col-md-6">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="staffLastName" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="staffAddress" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="contactNumber" class="form-label">Contact Number</label>
+                  <input type="text" class="form-control" id="staffContactNumber" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="department" class="form-label">Department</label>
+                  <select class="form-control" id="department">
+                      <option value="" selected disabled>Please choose department</option>
+                      <option >Operation</option>
+                      <option >Maintenance</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="position" class="form-label">Position</label>
+                  <input type="text" class="form-control" id="position" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="accessLevel" class="form-label">Access Level</label>
+                  <select class="form-control" id="accessLevel">
+                      <option value="" selected disabled>Please choose access level</option>
+                      <option >ADMIN</option>
+                      <option >SAP</option>
+                      <option >AP</option>
+                      <option >ECP</option>
+                      <option >NCP</option>
+                  </select>
+                </div>
+                <div class="col-md-12" id="imageForm" enctype="multipart/form-data">
+                  <label for="picture" class="form-label">Profile Picture</label>
+                  <input type="file" name="image" class="form-control" id="staffMemberImage" accept="image/*">
+                </div>
+              </form>
+            </div>
+          </div>          
+        </div>
+        <div class="card-footer">
+          <div class="col-12">
+            <button id="btnAddStaff" class="btn btn-primary" type="button">Add</button>
+            <button id="btnClearStaff" class="btn btn-danger" type="button">Clear</button>
+          </div>
+        </div>
+      </div>
+      <div class="card card-custom mt-1">
+        <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <h3 class="card-title" style="margin: 0;">Registered Staffs</h3>
+          <div style="position: relative; margin-left: auto;">
+              <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+              <input type="text" id="emailInputRegisteredStaff" placeholder="Enter staff email" style="padding-left: 30px; text-align: center;"/>
+          </div>
+        </div>
+        <div class="card-body">
+          <row>
+            <div class="col-sm-12 col-lg-12 col-xs-12">
+              <table class="table" id="selectedBookEntryGrid">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Staff Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Contact Number</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Access Level</th>
+                    <th scope="col">Active Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody id="registeredStaff">
+                  
+                </tbody>
+            </table>
+            </div>
+          </row>
+        </div>
+      </div>
+    </div>
+
+      <!-- Modal for updating staff -->
+<div class="modal fade" id="updateStaffModal" tabindex="-1" role="dialog" aria-labelledby="updateStaffModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document"> <!-- Added modal-dialog-centered class -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateStaffModalLabel">Update Staff Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Form to update staff data -->
+        <form id="updateStaffForm">
+          <div class="form-group">
+            <label for="updateFirstName">First Name</label>
+            <input type="text" class="form-control" id="updateStaffFirstName" name="updateFirstName">
+          </div>
+          <div class="form-group">
+            <label for="updateLastName">Last Name</label>
+            <input type="text" class="form-control" id="updateStaffLastName" name="updateLastName">
+          </div>
+          <div class="form-group">
+            <label for="updateAddress">Address</label>
+            <input type="text" class="form-control" id="updateStaffAddress" name="updateAddress">
+          </div>
+          <div class="form-group">
+            <label for="updateContactNumber">Contact Number</label>
+            <input type="text" class="form-control" id="updateStaffContactNumber" name="updateContactNumber">
+          </div>
+          <!-- Add more fields as needed -->
+          <input type="hidden" id="staffEmailToUpdate" name="staffEmailToUpdate"> <!-- Hidden field to store customer ID -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="updateStaff()">Update Staff</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </main>
+<!---------------------------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------------------>
+   <!-- Main content for add work permit page -->
+  <main class="dz__main" id="createWorkPermitMain" style="display: none;">
+    <div class="container-fluid my-2">
+
+      <div class="card card-custom">
+        <div class="card-header">
+          <h3 class="card-title">CREATE WORK PERMIT</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-lg-8 col-xs-12">
+              <form method="POST" class="row g-2" id="memberForm"
+                data-toggle="validator" novalidate="true">
+                <div class="col-md-6">
+                  <label for="location" class="form-label">Location</label>
+                  <input type="text" class="form-control" id="location" placeholder="">
+                </div>
+                <div class="col-6">
+                  <label for="workPermitType" class="form-label">Work Permit Type</label>
+                  <select ignore="true" class="form-control dz-selectpicker" data-show-subtext="true"
+                    id="workPermitType" name="workPermitType" required ignore-edit>
+                    <option value="" selected disabled>Please Choose Work Permit Type</option>
+                    <option>General</option>
+                    <option>Confined Space</option>
+                    <option>Hot Work</option>
+                    <option>Work at Height</option>
+                    <option>LOTO</option>
+                    <option>Lifting</option>
+                  </select>        
+                </div> 
+                <div class="col-12">
+                  <label for="workDescription" class="form-label">Work Description</label>
+                  <textarea class="form-control" rows="5" id="workDescription" name="text"></textarea>
+                </div> 
+                <div class="col-6">
+                  <label for="startDate" class="form-label">Start Date</label>
+                  <input type="date" class="form-control" id="startDate" placeholder="">
+                </div>
+                <div class="col-6">
+                  <label for="supervisor" class="form-label">Supervisor</label>
+                  <input type="text" class="form-control" id="supervisor" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="workCrew" class="form-label">Work Crew</label>
+                  <input type="text" class="form-control" id="workCrew" placeholder="">
+                </div>
+                <div class="col-6">
+                  <label for="emergencyContactNumber" class="form-label">Emergency Contact Number</label>
+                  <input type="text" class="form-control" id="emergencyContactNumber" placeholder="">
+                </div>
+                <div class="col-6">
+                  <label for="supervisorPhoneNumber" class="form-label">Supervisor's Phone Number</label>
+                  <input type="text" class="form-control" id="supervisorPhoneNumber" placeholder="">
+                </div>
+              </form>
+            </div>
+          </div> 
+          <hr style="border-top: 4px solid rgba(170, 149, 149, 0.2); margin-top: 50px;margin-bottom: 50px;">    
+          <div class="col-12 mt-3">
+            <label class="form-label fw-bold">Primary and Secondary Energy Sources (Tick √)</label>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Electrical">
+                  <label class="form-check-label">Electrical</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Pneumatic">
+                  <label class="form-check-label">Pneumatic</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Hydraulic">
+                  <label class="form-check-label">Hydraulic</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Gases">
+                  <label class="form-check-label">Gases</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Water">
+                  <label class="form-check-label">Water</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Steam">
+                  <label class="form-check-label">Steam</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Chemical">
+                  <label class="form-check-label">Chemical</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="psEnergySources" type="checkbox"  value="Other">
+                  <label class="form-check-label">Other</label>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <hr style="border-top: 4px solid rgba(170, 149, 149, 0.2); margin-top: 50px;margin-bottom: 50px;">
+          <div class="col-12 mt-3">
+            <label class="form-label fw-bold">Stored Energy sources (Tick √)</label>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Rotation">
+                  <label class="form-check-label">Rotation</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Gravity">
+                  <label class="form-check-label">Gravity</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Mechanical">
+                  <label class="form-check-label">Mechanical</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Thermal">
+                  <label class="form-check-label">Thermal</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Electrical">
+                  <label class="form-check-label">Electrical</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Chemicals">
+                  <label class="form-check-label">Chemicals</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Hydraulic">
+                  <label class="form-check-label">Hydraulic</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Pneumatic">
+                  <label class="form-check-label">Pneumatic</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Gases">
+                  <label class="form-check-label">Gases</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Water">
+                  <label class="form-check-label">Water</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Steam">
+                  <label class="form-check-label">Steam</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" name="energySources" type="checkbox"  value="Other">
+                  <label class="form-check-label">Other</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style="border-top: 4px solid rgba(170, 149, 149, 0.2); margin-top: 50px;margin-bottom: 50px;">
+          <div class="col-12 mt-3">
+            <label class="form-label fw-bold">Associated Risks (Tick √)</label>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Electrocution">
+                  <label class="form-check-label">Electrocution</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Arc Flash">
+                  <label class="form-check-label">Arc Flash</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Noise">
+                  <label class="form-check-label">Noise</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Asphyxiation">
+                  <label class="form-check-label">Asphyxiation</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Falling from">
+                  <label class="form-check-label">Falling from/in</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Burn">
+                  <label class="form-check-label">Burn</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Fire">
+                  <label class="form-check-label">Fire</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Slips/trips">
+                  <label class="form-check-label">Slips/trips</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Manual handling">
+                  <label class="form-check-label">Manual handling</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Dust">
+                  <label class="form-check-label">Dust</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Falling objectives">
+                  <label class="form-check-label">Falling objectives</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Flying particle">
+                  <label class="form-check-label">Flying particle</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Entangle">
+                  <label class="form-check-label">Entangle</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="associatedRisks" value="Other">
+                  <label class="form-check-label">Other</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style="border-top: 4px solid rgba(170, 149, 149, 0.2); margin-top: 50px;margin-bottom: 50px;"> 
+          <div class="col-12 mt-3">
+            <label class="form-label fw-bold">Personal Protective Equipment -PPE/(Tick √)</label>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Helmet">
+                  <label class="form-check-label">Helmet</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Goggles">
+                  <label class="form-check-label">Goggles</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Mask">
+                  <label class="form-check-label">Mask</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Overall">
+                  <label class="form-check-label">Overall</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Gloves">
+                  <label class="form-check-label">Gloves</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Full body harness">
+                  <label class="form-check-label">Full body harness</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Ear Plug">
+                  <label class="form-check-label">Ear Plug</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Arc Flash kit">
+                  <label class="form-check-label">Arc Flash kit</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Gas Mask">
+                  <label class="form-check-label">Gas Mask</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Shoes">
+                  <label class="form-check-label">Shoes</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Boots">
+                  <label class="form-check-label">Boots</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Shield">
+                  <label class="form-check-label">Shield</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="PPE" value="Fire Blanket">
+                  <label class="form-check-label">Fire Blanket</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style="border-top: 4px solid rgba(170, 149, 149, 0.2); margin-top: 50px;margin-bottom: 50px;">
+          <div class="col-12 mt-3">
+            <label class="form-label fw-bold">Fire Safety Precaution (Tick √)</label>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="fireSafetyPrecaution" value="Carbon dioxide">
+                  <label class="form-check-label">Carbon dioxide</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="fireSafetyPrecaution" value="Dry Powder">
+                  <label class="form-check-label">Dry Powder</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="fireSafetyPrecaution" value="Water">
+                  <label class="form-check-label">Water</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="fireSafetyPrecaution" value="Hearing of fire alarm">
+                  <label class="form-check-label">Hearing of fire alarm</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="fireSafetyPrecaution" value="Removal of combustible material/ Fire Blanket">
+                  <label class="form-check-label">Removal of combustible material/ Fire Blanket</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <hr style="border-top: 4px solid rgba(170, 149, 149, 0.2); margin-top: 50px;margin-bottom: 50px;">  
+          <div class="col-12">
+            <label for="additionalInstruction" class="form-label">Additional Instruction</label>
+            <textarea class="form-control" rows="3" id="additionalInstruction" name="text"></textarea>
+          </div>      
+        </div> 
+        <div class="card-footer">
+          <div class="col-12">
+            <button id="btnCreateNewWorkPermit" class="btn btn-primary" type="button">Submit</button>
+            <button id="btnClearWorkPermit" class="btn btn-danger" type="button">Clear</button>
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </main>
+<!------------------------------------------------------------------------------------------------------------------------>
+   <!-- Main content for Received WorkPermit page -->
+   <main class="dz__main" id="receivedWorkPermitMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+    <div class="card card-custom mt-1">
+      <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="card-title" style="margin: 0;">Approval Pending Work Permit List</h3>
+        <div style="position: relative; margin-left: auto;">
+            <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+            <input type="text" id="emailInputPending" placeholder="Enter staff email" style="padding-left: 30px; text-align: center;"/>
+        </div>
+    </div>
+      <div class="card-body">
+        <row>
+          <div class="col-sm-12 col-lg-12 col-xs-12">
+            
+            <div class="table-responsive">
+              <table class="table" id="selectedBookEntryGrid">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Work Permit Id</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Work Permit Type</th>
+                  <th scope="col">Work Description</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Maintenance Eng</th>
+                  <th scope="col">Supervisor</th>
+                  <th scope="col">Work Crews</th>
+                  <th scope="col">Emergency Contact</th>
+                  <th scope="col">Supervisor Contact</th>
+                  <th scope="col">Primary/Secondary Energy Sources</th>
+                  <th scope="col">Stored Energy Sources</th>
+                  <th scope="col">Associated Risks</th>
+                  <th scope="col">PPE</th>
+                  <th scope="col">Fire Safety Precaution</th>
+                  <th scope="col">Additional Instruction</th>
+                  <th scope="col">Approve</th>
+                  <th scope="col">Reject</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody id="pendingWorkPermits">
+                  
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </row>
+      </div>
+    </div>
+  </div>
+
+ <!-- Modal for Approving Work Permit -->
+<div class="modal fade" id="approveWorkPermitModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+
+      <!-- Header -->
+      <div class="modal-header bg-secondary text-light">
+        <h5 class="modal-title fw-semibold">
+          Isolation List by SAP
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body bg-light">
+
+        <form id="approveWorkPermitForm">
+
+          <!-- Title Row -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0 text-secondary fw-bold">Isolation Steps</h6>
+            <button type="button" class="btn btn-success btn-sm px-3" id="addRowBtn">
+              + Add Step
+            </button>
+          </div>
+
+          <!-- Table Wrapper -->
+          <div class="table-responsive bg-white rounded shadow-sm">
+            <table class="table table-bordered table-hover align-middle mb-0 text-center">
+
+              <thead class="table-secondary">
+                <tr>
+                  <th style="width:80px;">Step</th>
+                  <th>Equipment</th>
+                  <th>TAG #</th>
+                  <th>Present Status</th>
+                  <th>LOTO Status</th>
+                  <th style="width:100px;">Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="isolationTableBody">
+
+                <tr>
+                  <td class="step-number fw-bold">1</td>
+                  <td><input type="text" class="form-control form-control-sm text-light" id="equipment"></td>
+                  <td><input type="text" class="form-control form-control-sm text-light" id="tag"></td>
+                  <td><input type="text" class="form-control form-control-sm text-light" id="present-status"></td>
+                  <td><input type="text" class="form-control form-control-sm text-light" id="loto-status"></td>
+                  <td>
+                    <button type="button" class="btn btn-outline-danger btn-sm removeRow">
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+
+        </form>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer bg-secondary border-top">
+        <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary px-4 fw-semibold" onclick="approveWorkPermit()">
+          Approve Work Permit
+        </button>
+      </div>
+      <input type="hidden" id="workPermitIdToSave" ><!-- Hidden field to store customer password-->
+      <input type="hidden" id="locationToSave" >
+      <input type="hidden" id="workPermitTypeToSave" > 
+      <input type="hidden" id="startDateToSave" >   
+    </div>
+  </div>
+</div>
+
+ <!-- Modal for updating work permit -->
+<div class="modal fade" id="updateapprovalPendingWorkPermitModal" tabindex="-1" role="dialog" aria-labelledby="updateapprovalPendingWorkPermitModal" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document"> <!-- Added modal-dialog-centered class -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="updateWorkPermitModalLabel">Update Work Permit Data</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Form to update work permit data -->
+      <form id="updateWorkPermitForm">
+        <div class="form-group">
+          <label for="updateLocation">Location</label>
+          <input type="text" class="form-control" id="updateLocation" name="updateLocationr">
+        </div>
+        <div class="form-group">
+          <label for="updateWorkDescription">WorkDescription</label>
+          <input type="text" class="form-control" id="updateWorkDescription" name="updateWorkDescription">
+        </div>
+        <div class="form-group">
+          <label for="updateSupervisor">Supervisor</label>
+          <input type="text" class="form-control" id="updateSupervisor" name="updateSupervisor">
+        </div>
+        <div class="form-group">
+          <label for="updateWorkCrew">WorkCrew</label>
+          <input type="text" class="form-control" id="updateWorkCrew" name="updateWorkCrew">
+        </div>
+        <div class="form-group">
+          <label for="updateEmergencyContactNumber">Emergency Contact Number</label>
+          <input type="text" class="form-control" id="updateEmergencyContactNumber" name="updateEmergencyContactNumber">
+        </div>
+        <div class="form-group">
+          <label for="updateSupervisorPhoneNumber">Supervisor Phone Number</label>
+          <input type="text" class="form-control" id="updateSupervisorPhoneNumber" name="updateSupervisorPhoneNumber">
+        </div>
+        <div class="form-group">
+          <label for="updateAdditionalInstruction">AdditionalInstruction</label>
+          <input type="text" class="form-control" id="updateAdditionalInstruction" name="updateAdditionalInstruction">
+        </div>
+        <!-- Add more fields as needed -->
+        <input type="hidden" id="workPermitIdToUpdate" name="workPermitIdToUpdate"> <!-- Hidden field to store serviceId -->
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" onclick="updateApprovalPendingWorkPermit()">Update Work Permit</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Modal for reject appointments -->
+<div class="modal fade" id="rejectWorkPermitModal" tabindex="-1" role="dialog" aria-labelledby="rejectWorkPermitModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document"> <!-- Added modal-dialog-centered class -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rejectWorkPermitModalLabel">Reject Work Permit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Form to approve Appointment data -->
+        <form id="rejectWorkPermitForm">
+          
+          <div class="form-group">
+            <label for="rejectedReason">Rejected Reason</label>
+            <input type="text" class="form-control" id="rejectedReason" name="rejectedReason">
+          </div>
+          <!-- Add more fields as needed -->
+          <input type="hidden" id="workPermitIdToReject" name="rworkPermitIdToReject"> <!-- Hidden field to store serviceId -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="rejectApprovalPendingWorkPermit()">Reject Work Permit</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+<!------------------------------------------------------------------------------------------------------------------------>
+
+   
+<!------------------------------------------------------------------------------------------------------------------------>
+   <!-- Main content for approved work permit page -->
+   <main class="dz__main" id="sapApprovedWorkPermitMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+    <div class="card card-custom mt-1">
+      <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="card-title" style="margin: 0;">SAP Approved Work Permit List</h3>
+        <div style="position: relative; margin-left: auto;">
+            <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+            <input type="text" id="emailInputApproved" placeholder="Enter staff email" style="padding-left: 30px; text-align: center;"/>
+        </div>
+    </div>
+      <div class="card-body">
+        <row>
+          <div class="col-sm-12 col-lg-12 col-xs-12">
+            <div class="table-responsive">
+              <table class="table" id="selectedBookEntryGrid">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Work Permit Id</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Work Permit Type</th>
+                  <th scope="col">Work Description</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Maintenance Eng</th>
+                  <th scope="col">Supervisor</th>
+                  <th scope="col">Work Crews</th>
+                  <th scope="col">Emergency Contact</th>
+                  <th scope="col">Supervisor Contact</th>
+                  <th scope="col">Primary/Secondary Energy Sources</th>
+                  <th scope="col">Stored Energy Sources</th>
+                  <th scope="col">Associated Risks</th>
+                  <th scope="col">PPE</th>
+                  <th scope="col">Fire Safety Precaution</th>
+                  <th scope="col">Approved Sap</th>
+                  <th scope="col">Isolate</th>
+                </tr>
+                </thead>
+                <tbody id="approvedWorkPermits">
+                  
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </row>
+      </div>
+    </div>
+  </div>
+
+   
+<!-- Isolation Completion Modal -->
+<div class="modal fade" id="isolationAPModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content shadow">
+
+      <!-- Header -->
+      <div class="modal-header bg-secondary text-light">
+        <h5 class="modal-title">Isolation Execution - AP</h5>
+        <button type="button" class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body bg-light">
+
+        <div class="table-responsive">
+          <table class="table table-bordered text-center align-middle">
+
+            <!-- MAIN HEADER -->
+            <thead>
+              <tr class="table-secondary">
+                <th rowspan="2">Step</th>
+                <th colspan="4">Isolation List by SAP</th>
+                <th colspan="2">ISOLATION (AP)</th>
+              </tr>
+
+              <tr class="table-secondary">
+                <th>Equipment</th>
+                <th>TAG #</th>
+                <th>Present Status</th>
+                <th>LOTO Status</th>
+                <th>Date / Sign</th>
+                <th>Lock No</th>
+              </tr>
+            </thead>
+
+            <!-- BODY -->
+            <tbody id="isolationAPTableBody">
+
+              <tr>
+                <td class="step-number">1</td>
+
+                <!-- SAP DATA (READ ONLY) -->
+                <td><input type="text" class="form-control form-control-sm equipment" id="equipmentAP" readonly></td>
+                <td><input type="text" class="form-control form-control-sm tag" id="tagAP"readonly></td>
+                <td><input type="text" class="form-control form-control-sm present-status" id="present-statusAP" readonly></td>
+                <td><input type="text" class="form-control form-control-sm loto-status" id="loto-statusAP" readonly></td>
+
+                <!-- AP UPDATE -->
+                <td>
+                  <input type="date" class="form-control form-control-sm ap-date" id="ap-dateAP">
+                </td>
+
+                <td>
+                  <input type="text" class="form-control form-control-sm lock-no" id="lock-noAP"
+                         placeholder="Lock No">
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer bg-secondary">
+        <button class="btn btn-secondary"
+                data-bs-dismiss="modal">Close</button>
+
+        <button class="btn btn-success"
+                onclick="isolationConfirm()">
+          Confirm Isolation
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+</main>
+
+<!------------------------------------------------------------------------------------------------------------------------>
+   <!-- Main content for completed Appointment page -->
+   <main class="dz__main" id="isolationCompletedWorkPermitMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+    <div class="card card-custom mt-1">
+      <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="card-title" style="margin: 0;">Isolation Completed Work Permit List</h3>
+        <div style="position: relative; margin-left: auto;">
+            <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+            <input type="text" id="emailInputCompleted" placeholder="" style="padding-left: 30px; text-align: center;"/>
+        </div>
+    </div>
+      <div class="card-body">
+        <row>
+          <div class="col-sm-12 col-lg-12 col-xs-12">
+            <div class="table-responsive">
+              <table class="table" id="selectedBookEntryGrid">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Work Permit Id</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Work Permit Type</th>
+                  <th scope="col">Work Description</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Maintenance Eng</th>
+                  <th scope="col">Supervisor</th>
+                  <th scope="col">Work Crews</th>
+                  <th scope="col">Emergency Contact</th>
+                  <th scope="col">Supervisor Contact</th>
+                  <th scope="col">Primary/Secondary Energy Sources</th>
+                  <th scope="col">Stored Energy Sources</th>
+                  <th scope="col">Associated Risks</th>
+                  <th scope="col">PPE</th>
+                  <th scope="col">Fire Safety Precaution</th>
+                  <th scope="col">Additonal Instruction</th>
+                  <th scope="col">Approved Sap</th>
+                  <th scope="col">Isolation CompletedBy AP</th>
+                   <th scope="col">Continue Date</th>
+                  <th scope="col">Continue By SAP</th>
+                  <th scope="col">Continue By ECP</th>
+                  <th scope="col">Continue By NCP</th>
+                  <th scope="col">Continue Work Crews</th>  
+                  <th scope="col">Confirm Completion</th>
+                  <th scope="col">Continue</th>
+                </tr>
+                </thead>
+                <tbody id="isolatedWorkPermits">
+                  
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </row>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal for confirm completion and add completion note model  -->
+<div class="modal fade" id="confirmCompletionModal" tabindex="-1" role="dialog" aria-labelledby="confirmCompletionModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document"> <!-- Added modal-dialog-centered class -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="confirmCompletionModalLabel">Confirm Completion By ECP</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Form to charges data -->
+      <form id="confirmCompletionForm">
+        <div class="form-group">
+          <label for="completionNoteByEcp">Completion Note</label>
+          <textarea class="form-control" rows="4" id="completionNoteByEcp" name="completionNoteByEcp"></textarea>
+        </div>
+        <!-- Add more fields as needed -->
+        
+         <input type="hidden" id="workPermitIdToConfirmCompletion"> <!-- Hidden field to store serviceId -->
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" onclick="updateWorkPermitWhenCompletionByECP()">Confirm Completion</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+    <!-- Modal for continue isolation completed permit by sap model  -->
+<div class="modal fade" id="continuePermitModal" tabindex="-1" role="dialog" aria-labelledby="continuePermitModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document"> <!-- Added modal-dialog-centered class -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="continuePermitModalLabel">Continue Work Permit</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Form to charges data -->
+      <form id="confirmCompletionForm">
+        <div class="form-group">
+          <label for="continueByECP">Continue By ECP</label>
+          <textarea class="form-control" rows="1" id="continueByECP" name="continueByECP"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="continueByNCP">Continue By NCP</label>
+          <textarea class="form-control" rows="1" id="continueByNCP" name="continueByNCP"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="continueWorkCrew">Continue Work Crews</label>
+          <textarea class="form-control" rows="1" id="continueWorkCrew" name="continueWorkCrew"></textarea>
+        </div>
+        
+        <!-- Add more fields as needed -->
+        
+         <input type="hidden" id="workPermitIdToContinue"> <!-- Hidden field to store serviceId -->
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" onclick="updateWorkPermitWhenContinueBySAP()">Confirm</button>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+
+<!------------------------------------------------------------------------------------------------------------------------>
+   <!-- Main content for completed work permit by ECP page -->
+   <main class="dz__main" id="completionWorkPermitListByEcpMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+    <div class="card card-custom mt-1">
+      <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="card-title" style="margin: 0;">Completion List By ECP</h3>
+        <div style="position: relative; margin-left: auto;">
+            <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+            <input type="text" id="emailInputCompleted" placeholder="" style="padding-left: 30px; text-align: center;"/>
+        </div>
+    </div>
+      <div class="card-body">
+        <row>
+          <div class="col-sm-12 col-lg-12 col-xs-12">
+            <div class="table-responsive">
+              <table class="table" id="selectedBookEntryGrid">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Work Permit Id</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Work Permit Type</th>
+                  <th scope="col">Work Description</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Maintenance Eng</th>
+                  <th scope="col">Supervisor</th>
+                  <th scope="col">Work Crews</th>
+                  <th scope="col">Emergency Contact</th>
+                  <th scope="col">Supervisor Contact</th>
+                  <th scope="col">Primary/Secondary Energy Sources</th>
+                  <th scope="col">Stored Energy Sources</th>
+                  <th scope="col">Associated Risks</th>
+                  <th scope="col">PPE</th>
+                  <th scope="col">Fire Safety Precaution</th>
+                  <th scope="col">Additonal Instruction</th>
+                  <th scope="col">Approved Sap</th>
+                  <th scope="col">Isolation CompletedBy AP</th>
+                  <th scope="col">Job Completed Date</th>
+                  <th scope="col">Completed Note</th>
+                  <th scope="col">Completed By ECP</th>   
+                  <th scope="col">Confirm Completion</th>
+                </tr>
+                </thead>
+                <tbody id="completionByEcpWorkPermits">
+                  
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </row>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<!------------------------------------------------------------------------------------------------------------------------>
+<!-- Main content for completed work permit by SAP page -->
+   <main class="dz__main" id="completionWorkPermitListBySapMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+    <div class="card card-custom mt-1">
+      <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="card-title" style="margin: 0;">Completion List By SAP</h3>
+        <div style="position: relative; margin-left: auto;">
+            <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+            <input type="text" id="emailInputCompleted" placeholder="" style="padding-left: 30px; text-align: center;"/>
+        </div>
+    </div>
+      <div class="card-body">
+        <row>
+          <div class="col-sm-12 col-lg-12 col-xs-12">
+            <div class="table-responsive">
+              <table class="table" id="selectedBookEntryGrid">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Work Permit Id</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Work Permit Type</th>
+                  <th scope="col">Work Description</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Maintenance Eng</th>
+                  <th scope="col">Supervisor</th>
+                  <th scope="col">Work Crews</th>
+                  <th scope="col">Emergency Contact</th>
+                  <th scope="col">Supervisor Contact</th>
+                  <th scope="col">Primary/Secondary Energy Sources</th>
+                  <th scope="col">Stored Energy Sources</th>
+                  <th scope="col">Associated Risks</th>
+                  <th scope="col">PPE</th>
+                  <th scope="col">Fire Safety Precaution</th>
+                  <th scope="col">Additonal Instruction</th>
+                  <th scope="col">Approved Sap</th>
+                  <th scope="col">Isolation CompletedBy AP</th>
+                  <th scope="col">Job Completed Date</th>
+                  <th scope="col">Completed Note</th>
+                  <th scope="col">Completed By ECP</th>
+                  <th scope="col">Completed By SAP</th>
+                  <th scope="col">Confirm DeIsolation</th>
+                </tr>
+                </thead>
+                <tbody id="completionBySapWorkPermits">
+                  
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </row>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<!------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------>
+<!-- Main content for completed work permit by AP page -->
+   <main class="dz__main" id="completionWorkPermitListByApMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+    <div class="card card-custom mt-1">
+      <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="card-title" style="margin: 0;">De Isolation Completion List By AP</h3>
+        <div style="position: relative; margin-left: auto;">
+            <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+            <input type="text" id="emailInputCompleted" placeholder="" style="padding-left: 30px; text-align: center;"/>
+        </div>
+    </div>
+      <div class="card-body">
+        <row>
+          <div class="col-sm-12 col-lg-12 col-xs-12">
+            <div class="table-responsive">
+              <table class="table" id="selectedBookEntryGrid">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Work Permit Id</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Work Permit Type</th>
+                  <th scope="col">Work Description</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Maintenance Eng</th>
+                  <th scope="col">Supervisor</th>
+                  <th scope="col">Work Crews</th>
+                  <th scope="col">Emergency Contact</th>
+                  <th scope="col">Supervisor Contact</th>
+                  <th scope="col">Primary/Secondary Energy Sources</th>
+                  <th scope="col">Stored Energy Sources</th>
+                  <th scope="col">Associated Risks</th>
+                  <th scope="col">PPE</th>
+                  <th scope="col">Fire Safety Precaution</th>
+                  <th scope="col">Additonal Instruction</th>
+                  <th scope="col">Approved Sap</th>
+                  <th scope="col">Isolation CompletedBy AP</th>
+                  <th scope="col">Job Completed Date</th>
+                  <th scope="col">Completed Note</th>
+                  <th scope="col">Completed By ECP</th>
+                  <th scope="col">Completed By SAP</th>
+                  <th scope="col">Deisolation Completed Date</th>
+                  <th scope="col">Completed By AP</th>
+                  <th scope="col">Confirm HSE Incharge</th>
+                </tr>
+                </thead>
+                <tbody id="completionByApWorkPermits">
+                  
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </row>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<!------------------------------------------------------------------------------------------------------------------------>
+   <!-- Main content for complted Work Permit Log page -->
+   <main class="dz__main" id="compltedWorkPermitLogMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+        <div class="card card-custom mt-1">
+          <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+            <h3 class="card-title" style="margin: 0;">Completed Job Log</h3>
+            <div style="margin-bottom: 10px; margin-left: 20px;">
+              <label>From: <input type="date" id="fromDate"></label>
+              <label>To: <input type="date" id="toDate"></label>
+              <button id="filterDateBtn">Filter</button>
+              <button id="resetDateBtn">Reset</button>
+              <button id="printPdfBtn">Print PDF</button>
+            </div>
+            <div style="position: relative; margin-left: auto;">
+                <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+                <input type="text" id="emailInputInvoicedAppointment" placeholder="" style="padding-left: 30px; text-align: center;"/>
+            </div>
+        </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="finalJobLogTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Work Permit Id</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Work Permit Type</th>
+                                <th scope="col">Work Description</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">Maintenance Eng</th>
+                                <th scope="col">Supervisor</th>
+                                <th scope="col">Work Crews</th>
+                                <th scope="col">Emergency Contact</th>
+                                <th scope="col">Supervisor Contact</th>
+                                <th scope="col">Primary/Secondary Energy Sources</th>
+                                <th scope="col">Stored Energy Sources</th>
+                                <th scope="col">Associated Risks</th>
+                                <th scope="col">PPE</th>
+                                <th scope="col">Fire Safety Precaution</th>
+                                <th scope="col">Additonal Instruction</th>
+                                <th scope="col">Approved Sap</th>
+                                <th scope="col">Isolation CompletedBy AP</th>
+                                <th scope="col">Job Completed Date</th>
+                                <th scope="col">Completed Note</th>
+                                <th scope="col">Completed By ECP</th>
+                                <th scope="col">Completed By SAP</th>
+                                <th scope="col">Deisolation Completed Date</th>
+                                <th scope="col">Completed By AP</th>
+                                <th scope="col">HSE Incharge Completed Date</th>
+                                <th scope="col">Completed By HSE</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="completedWorkPermitList">
+                            <!-- Table content goes here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!------------------------------------------------------------------------------------------------------------------------>
+<!-- Main content for Rejected Appointment page -->
+<main class="dz__main" id="rejectedWorkPermitMain" style="display: none;">
+    <div class="container-fluid my-2"> 
+        <div class="card card-custom mt-1">
+          <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+            <h3 class="card-title" style="margin: 0;">Rejected Work Permit List</h3>
+            <div style="margin-bottom: 10px; margin-left: 20px;">
+              <label>From: <input type="date" id="fromDate"></label>
+              <label>To: <input type="date" id="toDate"></label>
+              <button id="filterDateBtn">Filter</button>
+              <button id="resetDateBtn">Reset</button>
+              <button id="printPdfBtn">Print PDF</button>
+            </div>
+            <div style="position: relative; margin-left: auto;">
+                <img src="assets/images/search.jpeg" alt="Search" style="position: absolute; left: 1px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;">
+                <input type="text" id="emailInputInvoicedAppointment" placeholder="" style="padding-left: 30px; text-align: center;"/>
+            </div>
+        </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="rejectedJobLogTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                  <th scope="col">Work Permit Id</th>
+                                  <th scope="col">Location</th>
+                                  <th scope="col">Work Permit Type</th>
+                                  <th scope="col">Work Description</th>
+                                  <th scope="col">Start Date</th>
+                                  <th scope="col">Maintenance Eng</th>
+                                  <th scope="col">Supervisor</th>
+                                  <th scope="col">Work Crews</th>
+                                  <th scope="col">Emergency Contact</th>
+                                  <th scope="col">Supervisor Contact</th>
+                                  <th scope="col">Primary/Secondary Energy Sources</th>
+                                  <th scope="col">Stored Energy Sources</th>
+                                  <th scope="col">Associated Risks</th>
+                                  <th scope="col">PPE</th>
+                                  <th scope="col">Fire Safety Precaution</th>
+                                  <th scope="col">Additonal Instruction</th>
+                                  <th scope="col">Rejected Reason</th>
+                                  <th scope="col">Rejected By</th>
+                                  <th scope="col">Delete</th>
+                                </tr>
+                          </thead>
+                          <tbody id="rejectedWorkPermitList">
+              
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<!------------------------------------------------------------------------------------------------------------------------>
+
+<!------------------------------------------------------------------------------------------------------------------------>
+ 
+
+  <!--------------------------------------------------------------------------------------------------------------------------------->
+
+  <!-- Main content for staff Profile Update page -->
+  <main class="dz__main" id="staffsProfileUpdate" style="display: none;">
+    <div class="container-fluid my-2">
+
+      <div class="card card-custom">
+        <div class="card-header">
+          <h3 class="card-title">Edit Profile</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-lg-8 col-xs-12">
+              <form method="POST" class="row g-2" id="memberForm"
+                data-toggle="validator" novalidate="true">
+                <div class="col-md-6">
+                  <label for="editFirstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="editFirstName" placeholder="">
+                </div>
+                <div class="col-md-6">
+                  <label for="editLastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="editLastName" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="editAddress" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="editAddress" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="editContactNumber" class="form-label">Contact Number</label>
+                  <input type="text" class="form-control" id="editContactNumber" placeholder="">
+                </div>
+              </form>
+            </div>
+          </div>          
+        </div>
+        <div class="card-footer">
+          <div class="col-12">
+            <button  class="btn btn-primary" onclick="updateStaffProfile()" type="button">Submit</button>
+            <button  class="btn btn-danger" type="button">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--------------------------------------------------------------------------------------------------------------------------------->
+
+  <!-- Main content for staff password Update page -->
+  <main class="dz__main" id="staffsPasswordUpdate" style="display: none;">
+    <div class="container-fluid my-2">
+
+      <div class="card card-custom">
+        <div class="card-header">
+          <h3 class="card-title">Change Password</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-lg-8 col-xs-12">
+              <form method="POST" class="row g-2" id="memberForm"
+                data-toggle="validator" novalidate="true">
+                <div class="col-12">
+                  <label for="oldPassword" class="form-label">Enter Old Password</label>
+                  <input type="password" class="form-control" id="oldPassword" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="newPassword1" class="form-label">Enter New password</label>
+                  <input type="password" class="form-control" id="newPassword1" placeholder="">
+                </div>
+                <div class="col-12">
+                  <label for="newPassword2" class="form-label">Re-Enter New Password</label>
+                  <input type="password" class="form-control" id="newPassword2" placeholder="">
+                </div>
+                <input type="hidden" id="staffPasswordToUpdate" > <!-- Hidden field to store customer password-->
+              </form>
+            </div>
+          </div>          
+        </div>
+        <div class="card-footer">
+          <div class="col-12">
+            <button  class="btn btn-primary" onclick="updateStaffPassword()" type="button">Submit</button>
+            <button  class="btn btn-danger" type="button">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+
+  <!---------------------------------------------------------------------------------------------------------------------------------->
+   
+
+
+  <script src="assets/script/app.js" defer></script>
+   <script src="assets/script/config.js" defer></script>
+  <script src="assets/script/createNewWorkPermit.js" defer></script>
+  <script src="assets/script/getAndUpdateApprovalPendingPermits.js" defer></script>
+  <script src="assets/script/adminDashboard.js" defer></script>
+  <script src="assets/script/approveWorkPermit.js" defer></script>
+  <script src="assets/script/approveBySAPModel.js" defer></script>
+  <script src="assets/script/getAndIsolateAllSapApprovedWorkPermit.js" defer></script>
+  <script src="assets/script/staffAccounts.js" defer></script>
+  <script src="assets/script/isolatedByAPModel.js" defer></script>
+  <script src="assets/script/isolationConfirm.js" defer></script>
+  <script src="assets/script/getAndConfirmOrContinueIsolatedWorkPermit.js" defer></script>
+  <script src="assets/script/getWorkPermitsCompletionByECP.js" defer></script>
+  <script src="assets/script/getWorkPermitsCompletionBySap.js" defer></script>
+  <script src="assets/script/getWorkPermitsCompletionByAp.js" defer></script>
+  <script src="assets/script/getAllCompletedWorkPermitList.js" defer></script>
+  <script src="assets/script/getAllRejectedWorkPermitList.js" defer></script>
+  <script src="assets/script/dashboardCounts.js" defer></script>
+  <script src="assets/script/editStaffProfile.js" defer></script>
+  <script src="assets/script/passwordChange.js" defer></script>
+  <script src="assets/script/email.js" defer></script>
+  
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/jsgrid-1.5.3/jsgrid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="assets/script/jsgrid-example.js"></script>
+  <script src="assets/bootstrap-5.1.3/js/bootstrap.min.js"></script>  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/script/dashboardCounts.js" ></script>
+  <script src="assets/script/chart.js" ></script>
+
+
+  
+  
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+ 
+</body>
+</html>

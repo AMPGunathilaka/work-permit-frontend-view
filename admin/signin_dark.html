@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>DZ LMS</title>
+
+<link rel="stylesheet" href="assets/bootstrap-5.1.3/css/bootstrap.min.css">
+
+<style>
+
+/* ===== FULL PAGE BACKGROUND ===== */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background: url('assets/images/bg-powerplant.jpg') no-repeat center center fixed;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* DARK OVERLAY */
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
+}
+
+
+/* ===== LOGIN CONTAINER ===== */
+
+.form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    z-index: 1;
+}
+
+
+/* ===== GLASS CARD ===== */
+
+.card {
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+}
+
+
+/* ===== INPUT STYLE ===== */
+
+.form-control {
+
+    background: rgba(255,255,255,0.15);
+
+    border: none;
+
+    border-radius: 10px;
+
+    color: white;
+
+    padding: 12px;
+
+    margin-bottom: 15px;
+}
+
+.form-control::placeholder {
+
+    color: rgba(255,255,255,0.7);
+}
+
+.form-control:focus {
+
+    background: rgba(255,255,255,0.25);
+
+    box-shadow: none;
+
+    color: white;
+}
+
+
+/* ===== BUTTON STYLE ===== */
+
+.btn-primary {
+
+    background: linear-gradient(45deg, #0d6efd, #00c6ff);
+
+    border: none;
+
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+
+    transform: scale(1.05);
+
+    background: linear-gradient(45deg, #00c6ff, #0d6efd);
+}
+
+
+/* ===== TEXT STYLE ===== */
+
+.text-muted {
+
+    color: rgba(255,255,255,0.7) !important;
+}
+
+a {
+
+    color: white;
+
+    text-decoration: none;
+}
+
+a:hover {
+
+    color: #00c6ff;
+}
+
+
+/* LOGO EFFECT */
+
+.logo {
+
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #ddd;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+
+</head>
+
+<body class="text-center">
+
+
+<main class="form-signin">
+
+<div class="card py-4 px-4">
+
+
+<!-- ================= LOGIN SECTION ================= -->
+
+<form id="loginSection">
+
+<img class="mb-4 logo"
+     src="assets/images/billlogo.png"
+     width="100"
+     height="100">
+
+<h1 class="h4 mb-3 fw-normal">Permit Management Portal</h1>
+
+
+<input type="text"
+       class="form-control"
+       placeholder="Username"
+       id="userName">
+
+
+<input type="password"
+       class="form-control"
+       placeholder="Password"
+       id="employeePassword">
+
+
+<div class="row mb-3">
+
+<div class="col-6 text-start">
+
+<input type="checkbox" id="rememberMeS">
+<label for="rememberMeS"> Show Password</label>
+
+</div>
+
+<div class="col-6 text-end">
+
+<a href="#" id="showForgot">
+Forgot password?
+</a>
+
+</div>
+
+</div>
+
+
+<button class="w-100 btn btn-lg btn-primary"
+        type="button"
+        onclick="loginEmployee()">
+
+Sign in
+
+</button>
+
+<div id="loginLoader" style="display:none; text-align:center; margin-top:10px;">
+    <div class="spinner"></div>
+</div>
+
+
+<p class="mt-4 mb-0 text-muted">
+
+10MW Colombo Waste-to-Energy Power Plant
+
+</p>
+
+</form>
+
+
+
+<!-- ================= FORGOT EMAIL ================= -->
+
+<div id="forgotEmailSection" class="d-none">
+
+<h4 class="mb-3">Forgot Password</h4>
+
+<input type="email"
+       class="form-control"
+       id="fp_staff_email"
+       placeholder="Enter registered email">
+
+
+<button class="btn btn-success w-100 mb-2"
+        id="btnSendCodeStaffFP">
+
+Send Code
+
+</button>
+
+<a href="#" id="backToLogin1">
+Back to Login
+</a>
+
+</div>
+
+
+
+<!-- ================= CODE SECTION ================= -->
+
+<div id="codeSection" class="d-none">
+
+<h4 class="mb-3">Enter Verification Code</h4>
+
+<input type="text"
+       class="form-control"
+       id="fp_code"
+       placeholder="Enter code">
+
+<button class="btn btn-warning w-100"
+        id="btnVerifyCode">
+
+Submit Code
+
+</button>
+
+</div>
+
+
+
+<!-- ================= PASSWORD RESET ================= -->
+
+<div id="passwordSection" class="d-none">
+
+<h4 class="mb-3">Reset Password</h4>
+
+<input type="password"
+       class="form-control"
+       id="fp_new"
+       placeholder="New password">
+
+<input type="password"
+       class="form-control"
+       id="fp_confirm"
+       placeholder="Confirm password">
+
+<input type="hidden"
+       id="staffEmailForFogotPassword">
+
+<button class="btn btn-danger w-100"
+        id="btnResetPassword">
+
+Reset Password
+
+</button>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+const checkbox = document.getElementById("rememberMeS");
+
+checkbox.addEventListener("change", function () {
+
+const passwordInput =
+document.getElementById("employeePassword");
+
+if (this.checked)
+passwordInput.type = "text";
+
+else
+passwordInput.type = "password";
+
+});
+
+});
+
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="assets/bootstrap-5.1.3/js/bootstrap.min.js"></script>
+
+ <script src="assets/script/config.js" defer></script>
+
+<script src="assets/script/employeeLogIn.js"></script>
+
+<script src="assets/script/forgotPassword.js"></script>
+
+
+</body>
+
+</html>

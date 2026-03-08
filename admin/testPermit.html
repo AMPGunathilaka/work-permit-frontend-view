@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GENERAL WORK PERMIT</title>
+
+<style>
+
+/* ================= A4 PAGE ================= */
+@page {
+    size: A4 portrait;
+    margin: 12mm;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:white;
+    font-family: Arial, sans-serif;
+    font-size:11px;
+}
+
+/* ================= MAIN PERMIT ================= */
+.container{
+    width:186mm;
+    min-height:273mm;
+    margin:auto;
+    padding:6mm;
+    box-sizing:border-box;
+}
+
+/* ================= TABLE ================= */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid black;
+    padding:4px;
+    vertical-align:top;
+}
+
+/* ================= HEADER ================= */
+.header{
+    text-align:center;
+    font-weight:bold;
+    border:none;
+}
+
+/* ================= SECTION ================= */
+.section-title{
+    background:#eeeeee;
+    font-weight:bold;
+}
+
+/* ================= NO BORDER ================= */
+.no-border td{
+    border:none;
+}
+
+/* ================= CHECKBOX ================= */
+.checkbox{
+    display:inline-block;
+    width:12px;
+    height:12px;
+    border:1px solid black;
+    margin-right:4px;
+}
+
+/* ================= SIGNATURE ================= */
+.signature-box{
+    height:35px;
+}
+
+/* ================= PRINT FIX ================= */
+@media print{
+    body{
+        margin:0;
+    }
+    .container{
+        page-break-after:avoid;
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <div class="no-print" style="text-align:right;padding:8px">
+        <button onclick="window.print()">Print</button>
+    </div>
+
+<div class="container">
+
+<!-- ================= HEADER ================= -->
+<table class="no-border">
+<tr>
+<td class="header">
+AITKEN SPENCE<br>
+WESTERN POWER COMPANY<br>
+10MW COLOMBO WASTE TO ENERGY POWER PLANT<br>
+WPC<br>
+REV D Date: 12/02/2026
+</td>
+</tr>
+</table>
+
+<h3 style="text-align:center;margin:5px;">GENERAL WORK PERMIT</h3>
+
+<!-- ================= BASIC DETAILS ================= -->
+<table>
+<tr>
+<td width="20%">Permit No</td>
+<td colspan="3" id="permitNo"></td>
+</tr>
+
+<tr>
+<td>Location</td>
+<td id="location"></td>
+<td>Permit Box</td>
+<td></td>
+</tr>
+
+<tr>
+<td>MS Reference</td>
+<td></td>
+<td>Period of Work</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Date Time From</td>
+<td></td>
+<td>To</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Work Description</td>
+<td colspan="3" id="workDescription"></td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= REQUESTER ================= -->
+<table>
+<tr class="section-title">
+<td colspan="6">Requester / Executive Competent Person (ECP)</td>
+</tr>
+
+<tr>
+<td>Maintenance Engineer</td>
+<td class="signature-box"></td>
+<td>Supervisor</td>
+<td class="signature-box"></td>
+<td>Work Crew</td>
+<td></td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= ENERGY ================= -->
+<table>
+<tr class="section-title">
+<td colspan="6">Primary & Secondary Energy Sources</td>
+</tr>
+
+<tr>
+<td><span class="checkbox"></span>Electrical</td>
+<td><span class="checkbox"></span>Pneumatic</td>
+<td><span class="checkbox"></span>Hydraulic</td>
+<td><span class="checkbox"></span>Gases</td>
+<td><span class="checkbox"></span>Water</td>
+<td><span class="checkbox"></span>Steam</td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= STORED ENERGY ================= -->
+<table>
+<tr class="section-title">
+<td colspan="6">Stored Energy Sources</td>
+</tr>
+
+<tr>
+<td><span class="checkbox"></span>Rotation</td>
+<td><span class="checkbox"></span>Gravity</td>
+<td><span class="checkbox"></span>Mechanical</td>
+<td><span class="checkbox"></span>Thermal</td>
+<td><span class="checkbox"></span>Electrical</td>
+<td><span class="checkbox"></span>Chemical</td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= RISKS ================= -->
+<table>
+<tr class="section-title">
+<td colspan="6">Associated Risks</td>
+</tr>
+
+<tr>
+<td><span class="checkbox"></span>Electrocution</td>
+<td><span class="checkbox"></span>Arc Flash</td>
+<td><span class="checkbox"></span>Noise</td>
+<td><span class="checkbox"></span>Burn</td>
+<td><span class="checkbox"></span>Fire</td>
+<td><span class="checkbox"></span>Dust</td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= PPE ================= -->
+<table>
+<tr class="section-title">
+<td colspan="6">Personal Protective Equipment (PPE)</td>
+</tr>
+
+<tr>
+<td><span class="checkbox"></span>Helmet</td>
+<td><span class="checkbox"></span>Goggles</td>
+<td><span class="checkbox"></span>Mask</td>
+<td><span class="checkbox"></span>Gloves</td>
+<td><span class="checkbox"></span>Boots</td>
+<td><span class="checkbox"></span>Fire Blanket</td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= ISOLATION ================= -->
+<table>
+<tr class="section-title">
+<th colspan="7">Isolation List</th>
+</tr>
+
+<tr>
+<th>Step</th>
+<th>Equipment</th>
+<th>TAG #</th>
+<th>Status</th>
+<th>LOTO</th>
+<th>Date/Sig</th>
+<th>Lock No</th>
+</tr>
+
+<tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<br>
+
+<!-- ================= ADDITIONAL ================= -->
+<table>
+<tr>
+<td>Additional Instructions</td>
+</tr>
+<tr>
+<td style="height:60px;"></td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= CONTACT ================= -->
+<table>
+<tr>
+<td>Emergency Contact Number</td>
+<td id="emergency"></td>
+<td>Supervisor Phone Number</td>
+<td id="supervisorPhone"></td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= SIGNATURE ================= -->
+<table>
+<tr class="section-title">
+<td>Issuing (SAP)</td>
+<td>Receiving (ECP/NCP)</td>
+<td>Witness (HSE)</td>
+</tr>
+
+<tr>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+</tr>
+</table>
+
+<br>
+
+<!-- ================= COMPLETION ================= -->
+<table>
+<tr class="section-title">
+<td colspan="5">Completion of Work</td>
+</tr>
+
+<tr>
+<td>Supervisor</td>
+<td>Operations Engineer</td>
+<td>Maintenance Engineer</td>
+<td>Shift In-Charge</td>
+<td>HSE In-Charge</td>
+</tr>
+
+<tr>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+</tr>
+</table>
+
+<table>
+<tr class="section-title">
+<td colspan="5">Completion of Work</td>
+</tr>
+
+<tr>
+<td>Supervisor</td>
+<td>Operations Engineer</td>
+<td>Maintenance Engineer</td>
+<td>Shift In-Charge</td>
+<td>HSE In-Charge</td>
+</tr>
+
+<tr>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+</tr>
+</table>
+
+<table>
+<tr class="section-title">
+<td colspan="5">Completion of Work</td>
+</tr>
+
+<tr>
+<td>Supervisor</td>
+<td>Operations Engineer</td>
+<td>Maintenance Engineer</td>
+<td>Shift In-Charge</td>
+<td>HSE In-Charge</td>
+</tr>
+
+<tr>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+</tr>
+</table>
+
+<table>
+<tr class="section-title">
+<td colspan="5">Completion of Work</td>
+</tr>
+
+<tr>
+<td>Supervisor</td>
+<td>Operations Engineer</td>
+<td>Maintenance Engineer</td>
+<td>Shift In-Charge</td>
+<td>HSE In-Charge</td>
+</tr>
+
+<tr>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+</tr>
+</table>
+
+<table>
+<tr class="section-title">
+<td colspan="5">Completion of Work</td>
+</tr>
+
+<tr>
+<td>Supervisor</td>
+<td>Operations Engineer</td>
+<td>Maintenance Engineer</td>
+<td>Shift In-Charge</td>
+<td>HSE In-Charge</td>
+</tr>
+
+<tr>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+</tr>
+</table>
+
+<table>
+<tr class="section-title">
+<td colspan="5">Completion of Work</td>
+</tr>
+
+<tr>
+<td>Supervisor</td>
+<td>Operations Engineer</td>
+<td>Maintenance Engineer</td>
+<td>Shift In-Charge</td>
+<td>HSE In-Charge</td>
+</tr>
+
+<tr>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+<td class="signature-box"></td>
+</tr>
+</table>
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="assets/jsgrid-1.5.3/jsgrid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="assets/script/jsgrid-example.js"></script>
+
+</body>
+</html>

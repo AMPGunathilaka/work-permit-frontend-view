@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<title>WebStylePress</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+		/>
+		<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+  		<link rel="stylesheet" href="assets/bootstrap-5.1.3/css/bootstrap.min.css">
+  		<link type="text/css" rel="stylesheet" href="assets/jsgrid-1.5.3/jsgrid.min.css" />
+  		<link type="text/css" rel="stylesheet" href="assets/jsgrid-1.5.3/jsgrid-theme.min.css" />
+
+		<link rel="stylesheet" href="INVOICE/custom.css" />
+		<link rel="stylesheet" href="INVOICE/custom2.css" />
+	</head>
+	<body>
+		<button onclick="printBill()" class="btn btn-primary" style="margin: 20px;">
+    		Print / Save as PDF
+		</button>
+		<div class="container receipt-wrap" id="receipt-wrap">
+			<div class="row justify-content-md-center">
+				<div class="receipt-main col-xs-10 col-sm-10 col-md-6">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="receipt-left">
+								<img
+									class="img-responsive"
+									alt="iamgurdeeposahan"
+									src="assets/images/billlogo.jpg"
+									style="width: 110px; border-radius: 60px"
+								/>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+							<div class="receipt-right">
+								<h3>Asitha Motors</h3>
+								<p>+94 11-35 35 355 <i class="fa fa-phone"></i></p>
+								<p>asithamotors@gmail.com<i class="fa fa-envelope-o"></i></p>
+								<p>Mirigama, Gampaha <i class="fa fa-location-arrow"></i></p>
+							</div>
+						</div>
+					</div>
+
+					<br />
+
+					<div class="row">
+						<div class="col-xs-8 col-sm-8 col-md-8 text-left">
+							<div class="receipt-right">
+								<h5 id="customerNamePrint"></h5>
+								<p id="contactNumberPrint"><b>Mobile :</b> +94 77 56 34 234</p>
+								<p id="addressPrint"><b>Address :</b> Pasyala</p>
+								<p id="serviceCategoryPrint"><b>Service Type :</b> Engine Repair</p>
+								<p id="vehicleNumberPrint"></p>
+							</div>
+						</div>
+						<div
+							class="col-xs-4 col-sm-4 col-md-4"
+							style="align-self: flex-end"
+						>
+							<div class="receipt-left">
+								<h1>Receipt</h1>
+							</div>
+						</div>
+					</div>
+
+					<br />
+
+					<div>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Description</th>
+									<th>Amount</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-9">Service Charge</td>
+									<td class="col-md-3" id="serviceChargePrint"> 15,000/-</td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Additional Charge</td>
+									<td class="col-md-3" id="additionalChargePrint"> 6,00/-</td>
+								</tr>
+								<tr>
+									<td class="text-right"
+										><h2><strong>Total: </strong></h2></td
+									>
+									<td class="text-left text-danger"
+										><h2 id="totalChargePrint"
+											><strong> 31,566/-</strong></h2
+										></td
+									>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row" >
+						<div class="col-xs-8 col-sm-8 col-md-8 text-left">
+							<div class="receipt-right">
+								<h5 style="color: rgb(140, 140, 140)"
+									>Thank you for choosing our service center!</h5
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<script src="assets/script/printInvoice.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/jsgrid-1.5.3/jsgrid.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+		<script src="assets/script/jsgrid-example.js"></script>
+		<script src="assets/bootstrap-5.1.3/js/bootstrap.min.js"></script>  
+		
+		<style>
+			@media print {
+   			 button {
+       			 display: none;
+    			}
+			}
+		</style>
+	</body>
+</html>
