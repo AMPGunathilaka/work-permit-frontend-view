@@ -364,7 +364,7 @@ $(document).ready(function() {
     // If the user confirms, redirect to the logout page
     if (confirmation) {
       sessionStorage.removeItem("loggedUser");
-      window.location.href = "signin_dark.html";
+      window.location.href = "index.html";
     }
   });
 });

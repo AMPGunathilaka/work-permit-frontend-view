@@ -1,2 +1,1 @@
-
 const BASE_URL = "https://waste-to-energy-power-plant.onrender.com";
