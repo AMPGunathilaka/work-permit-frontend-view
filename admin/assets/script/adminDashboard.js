@@ -4,7 +4,7 @@
 var staffEmail = sessionStorage.getItem("staffEmail");
 
 if (!staffEmail) {
-   window.location.href = "signin_dark.html";
+   window.location.href = "index.html";
 }
 
 
