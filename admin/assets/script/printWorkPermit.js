@@ -3,6 +3,7 @@ $(document).ready(function() {
      var urlParams = new URLSearchParams(window.location.search);
     var workPermitId = urlParams.get('workPermitId');
 
+
     // Make AJAX request to get staff details
     $.ajax({
         type: "GET",
