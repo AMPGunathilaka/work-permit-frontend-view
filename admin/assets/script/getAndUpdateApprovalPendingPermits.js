@@ -70,7 +70,13 @@ function fetchAllApprovalPendingAppointments() {
         method: "DELETE",
         url: BASE_URL+"/api/v1/workPermit/delete?workPermitId=" + workPermitId,
         success: function (response) {
-            console.log(response); // Log the response for debugging
+           Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'Work Permit deleted successfully.',
+                timer: 2000,
+                showConfirmButton: false
+            });
             fetchAllApprovalPendingAppointments(); // Refresh the table after successful deletion
         },
         error: function (error) {
@@ -81,13 +87,28 @@ function fetchAllApprovalPendingAppointments() {
   }
 
   // Event listener for delete icon click
-$(document).on('click', '.delete-pending-permit', function() {
-    var workPermitId = $(this).closest('tr').find('td:eq(0)').text(); 
-    console.log(workPermitId);
-    if (confirm("Are you sure you want to delete this work Permit?")) {
-        deleteApprovalPendingAppointment(workPermitId); 
-    }
-  });
+$(document).on('click', '.delete-pending-permit', function () {
+
+    var workPermitId = $(this).closest('tr').find('td:eq(0)').text();
+
+    Swal.fire({
+        title: 'Delete Work Permit?',
+        text: "This action cannot be undone!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, Delete',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            deleteApprovalPendingAppointment(workPermitId);
+        }
+
+    });
+
+});
 
 
 //--------------------------------------------------------------------------------------------------------------------------
@@ -124,6 +145,13 @@ $(document).on('click', '.update-workPermit', function() {
     var updateAdditionalInstruction = $('#updateAdditionalInstruction').val();
     // Get receivedAppointmentId
     var workPermitId = $('#workPermitIdToUpdate').val();
+
+    if (updateLocation === "" || updateWorkDescription === "" || updateSupervisor === "" || updateWorkCrew === ""|| updateEmergencyContactNumber === ""
+            || updateSupervisorPhoneNumber === "" || updateAdditionalInstruction === "" 
+        ) {
+            alert("Please provide all the inputs.");
+            return;
+        }
   
     // Perform AJAX request to update Appointment data
     $.ajax({
@@ -144,8 +172,13 @@ $(document).on('click', '.update-workPermit', function() {
       success: function(response) {
         
         $('#updateapprovalPendingWorkPermitModal').modal('hide');
-        // Optionally, refresh the table or display a success message
-        alert("Work Permit Update Successfully");
+        Swal.fire({
+            icon: 'success',
+            title: 'Updated!',
+            text: 'Work Permit Updated Successfully!',
+            timer: 2000,
+            showConfirmButton: false
+        });
         fetchAllApprovalPendingAppointments(); // Refresh table
       },
       error: function(error) {
@@ -177,6 +210,12 @@ $(document).on('click', '#reject', function() {
     var rejectedReason = $('#rejectedReason').val();
     // Get receivedAppointmentId
     var workPermitId = $('#workPermitIdToReject').val();
+
+    if (rejectedReason === "") {
+            alert("Please provide reoson for rejection");
+            return;
+        }
+
   
     // Perform AJAX request to update Appointment data
     $(document).ready(function() {
@@ -201,7 +240,14 @@ $(document).on('click', '#reject', function() {
                     // Include other fields to update as needed
                 }),
                 success: function(response) {
-                    alert("work permit rejected");   
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Rejected!',
+                        text: 'Work Permit Rejected!',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });  
+                    $('#rejectWorkPermitModal').modal('hide'); 
                     fetchAllApprovalPendingAppointments(); // Refresh table
                 },
                 error: function(error) {

@@ -52,7 +52,13 @@ function fetchAllRejectedWorkPermitsList() {
         method: "DELETE",
         url: BASE_URL+"/api/v1/rejectedWorkPermit/delete?workPermitId=" + workPermitId,
         success: function (response) {
-            alert(response);
+            Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'Work Permit deleted successfully.',
+                timer: 2000,
+                showConfirmButton: false
+            });
             fetchAllRejectedWorkPermitsList(); // Refresh the table after successful deletion
         },
         error: function (error) {
@@ -62,10 +68,28 @@ function fetchAllRejectedWorkPermitsList() {
     });
   }
 
-  // Event listener for delete icon click
-$(document).on('click', '.delete-rejeted-permit', function() {
-    var workPermitId = $(this).closest('tr').find('td:eq(0)').text(); 
-    if (confirm("Are you sure you want to delete this work Permit?")) {
-        deleteRejectedWorkPermit(workPermitId); 
-    }
-  });
+ 
+
+   // Event listener for delete icon click
+$(document).on('click', '.delete-rejeted-permit', function () {
+
+    var workPermitId = $(this).closest('tr').find('td:eq(0)').text();
+
+    Swal.fire({
+        title: 'Delete Work Permit?',
+        text: "This action cannot be undone!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, Delete',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            deleteRejectedWorkPermit(workPermitId);
+        }
+
+    });
+
+});

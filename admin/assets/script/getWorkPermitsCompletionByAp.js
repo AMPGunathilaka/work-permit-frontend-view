@@ -41,19 +41,35 @@ function fetchAllCompletedWorkPermitsByAP() {
             });
         },
         error: function (error) {
-            console.error("Error fetching appointments:", error);
+            console.error("Error fetching work permits:", error);
         }
     });
   }
 
 
   $(document).on('click', '#confirmCompletionHse', function() {
+
     var row = $(this).closest('tr');
-    var workPermitId = row.find('td:nth-child(2)').text(); 
-    if (confirm("Are you sure you want to complete this Work Permit?")) {
-        updateWorkPermitWhenCompletionByHSE(workPermitId); 
-    }
-  });
+    var workPermitId = row.find('td:nth-child(2)').text();
+
+    Swal.fire({
+        title: 'Confirm Completion',
+        text: "Are you sure you want to complete this Work Permit?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Complete it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            updateWorkPermitWhenCompletionByHSE(workPermitId);
+        }
+
+    });
+
+});
 
 
   function updateWorkPermitWhenCompletionByHSE(selectedWorkPermitId) {
@@ -81,7 +97,15 @@ function fetchAllCompletedWorkPermitsByAP() {
                     // Include other fields to update as needed
                 }),
                 success: function(response) {    
-                    fetchAllCompletedWorkPermitsByAP(); // Refresh table
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Completed!',
+                        text: 'Work Permit successfully completed.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+
+                fetchAllCompletedWorkPermitsByAP();
                 },
                 error: function(error) {
         

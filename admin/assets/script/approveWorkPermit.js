@@ -34,7 +34,14 @@ function approveWorkPermit() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function(response) {
-            alert(response);
+            Swal.fire({
+                icon: 'success',
+                title: 'Approved!',
+                text: 'Work Permit Approved!',
+                timer: 2000,
+                showConfirmButton: false
+            });
+           
             updateWorkPermitWhenApproveBySAP(selectedWorkPermitId);
         },
         error: function(xhr, status, error) {

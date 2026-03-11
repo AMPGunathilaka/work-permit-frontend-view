@@ -62,7 +62,13 @@ $(document).ready(function () {
 
                 staffMemberPictureSave(staffEmail); // save image
 
-                alert("Staff saved successfully!");
+                 Swal.fire({
+                    icon: 'success',
+                    title: 'Saved!',
+                    text: 'Staff Member saved successfully!',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
                 fetchAllStaffs(); // reload table
             },
             error: function (error) {
@@ -182,7 +188,13 @@ function staffMemberPictureSave(staffEmail){
         method: "DELETE",
         url: BASE_URL+"/api/v1/staff/delete?staffEmail=" + staffEmail,
         success: function (response) {
-            console.log(response); // Log the response for debugging
+           Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'Staff Member deleted successfully.',
+                timer: 2000,
+                showConfirmButton: false
+            });
             fetchAllStaffs(); // Refresh the table after successful deletion
         },
         error: function (error) {
@@ -192,14 +204,31 @@ function staffMemberPictureSave(staffEmail){
     });
   }
 
-  // Event listener for delete icon click
-$(document).on('click', '.delete-staff', function() {
-    var staffEmail = $(this).closest('tr').find('td:eq(1)').text(); // Extract customer email from the row
-    console.log(staffEmail);
-    if (confirm("Are you sure you want to delete this staff?")) {
-        deleteStaff(staffEmail); // Call deleteCustomer function with the extracted email
-    }
-  });
+
+
+     // Event listener for delete icon click
+$(document).on('click', '.delete-staff', function () {
+
+    var staffEmail = $(this).closest('tr').find('td:eq(1)').text();
+
+    Swal.fire({
+        title: 'Delete Staff Member?',
+        text: "This action cannot be undone!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, Delete',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            deleteStaff(staffEmail);
+        }
+
+    });
+
+});
 
   // Function to handle click on update-staff link
 $(document).on('click', '.update-staff', function() {
@@ -249,8 +278,13 @@ function updateStaff() {
         // Handle success response
         // Close the modal
         $('#updateStaffModal').modal('hide');
-        // Optionally, refresh the table or display a success message
-        alert("staff Update Successfully");
+         Swal.fire({
+            icon: 'success',
+            title: 'Updated!',
+            text: 'Staff Member Updated successfully.',
+            timer: 2000,
+            showConfirmButton: false
+        });
         fetchAllStaffs(); // Refresh table
       },
       error: function(error) {

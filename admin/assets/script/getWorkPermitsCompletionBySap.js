@@ -34,7 +34,7 @@ function fetchAllCompletedWorkPermitsBySAP() {
                         <td>${workPermit.completionNoteByEcp}</td>
                         <td>${workPermit.completedByMEng}</td>
                         <td>${workPermit.completedByShiftInCharge}</td>
-                        <td><button id="confirmIsolationAp" class="btn btn-success approve-btn" data-appointment-id="${workPermit.workPermitId}">DeIsolate - AP</button></td>
+                        <td><button id="confirmDeIsolationAp" class="btn btn-success approve-btn" data-appointment-id="${workPermit.workPermitId}">DeIsolate - AP</button></td>
                     </tr>
                 `);
             });
@@ -47,13 +47,30 @@ function fetchAllCompletedWorkPermitsBySAP() {
 
 
 
-  $(document).on('click', '#confirmIsolationAp', function() {
+
+   $(document).on('click', '#confirmDeIsolationAp', function() {
+
     var row = $(this).closest('tr');
-    var workPermitId = row.find('td:nth-child(2)').text(); 
-    if (confirm("Are you sure you want to complete this Work Permit?")) {
-        updateWorkPermitWhenCompletionByAP(workPermitId); 
-    }
-  });
+    var workPermitId = row.find('td:nth-child(2)').text();
+
+    Swal.fire({
+        title: 'Confirm De-Isolation',
+        text: "Are you sure you want to de-isolate this Work Permit?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, De-Isolate it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            updateWorkPermitWhenCompletionByAP(workPermitId); 
+        }
+
+    });
+
+});
 
 
   function updateWorkPermitWhenCompletionByAP(selectedWorkPermitId) {
@@ -80,7 +97,14 @@ function fetchAllCompletedWorkPermitsBySAP() {
                     completedByOpEng: completedByOpEng
                     // Include other fields to update as needed
                 }),
-                success: function(response) {    
+                success: function(response) {  
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'De-Isolated!',
+                        text: 'Work Permit successfully De-Isolated.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });    
                     fetchAllCompletedWorkPermitsBySAP(); // Refresh table
                 },
                 error: function(error) {

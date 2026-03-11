@@ -21,8 +21,13 @@ function loginEmployee() {
     // go to dashboard
                  window.location.href = "dashboard.html";
             } else {
-                // Show alert if login is unsuccessful
-                alert('Incorrect email or password');
+                Swal.fire({
+                icon: 'warning',
+                title: 'Failed!',
+                text: 'Please Enter Correct Email Password',
+                timer: 2000,
+                showConfirmButton: false
+            });
             }
         },
         error: function (error) {

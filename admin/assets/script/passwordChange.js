@@ -35,8 +35,16 @@ function getStaffPasswordToUpdate() {
               // Include other fields to update as needed
             }),
             success: function(response) {
-              alert("Password Update Successfully");
-              window.location.href = "signin_dark.html";
+               Swal.fire({
+                icon: 'success',
+                title: 'Updated!',
+                text: 'Password Updated Successfully',
+                confirmButtonText: 'OK'
+            }).then(() => {
+
+                window.location.href = "index.html";
+
+            });
             },
             error: function(error) {
               // Handle error response
@@ -47,7 +55,14 @@ function getStaffPasswordToUpdate() {
     }else if(oldCorrectPassword != oldEnteredPassword){
         alert("Old password incorrect");
     }else if(newPassword1 != newPassword2){
-        alert("Please Enter same password for both new password input fields");
+      Swal.fire({
+                icon: 'warning',
+                title: 'Failed!',
+                text: 'Please Enter same password for both new password',
+                timer: 2000,
+                showConfirmButton: false
+            });
+       
     }
      
   }

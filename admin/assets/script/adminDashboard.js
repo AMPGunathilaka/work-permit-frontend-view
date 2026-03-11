@@ -358,14 +358,23 @@ $(document).ready(function() {
   $(".dz__nav__dropdown-item:contains('Log Out')").click(function(e) {
     e.preventDefault(); // Prevent default link behavior
 
-    // Show a confirmation dialog
-    var confirmation = confirm("Are you sure you want to log out?");
-    
-    // If the user confirms, redirect to the logout page
-    if (confirmation) {
-      sessionStorage.removeItem("loggedUser");
-      window.location.href = "index.html";
-    }
+     Swal.fire({
+        title: 'Log Out',
+        text: "Are you sure you want to log out?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Log Out!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            sessionStorage.removeItem("loggedUser");
+            window.location.href = "index.html";
+        }
+
+    });
   });
 });
 

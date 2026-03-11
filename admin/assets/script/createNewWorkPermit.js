@@ -96,7 +96,9 @@ $(document).ready(function () {
 
 
         // --- INPUT VALIDATION ---
-        if (location === "" || workPermitType === "" || workDescription === "" || startDate === "") {
+        if (location === "" || workPermitType === "" || workDescription === "" || startDate === ""|| supervisor === ""
+            || workCrew === "" || emergencyContactNumber === "" || supervisorPhoneNumber === "" || additionalInstruction === ""
+        ) {
             alert("Please provide all the inputs.");
             return;
         }
@@ -164,9 +166,14 @@ $(document).ready(function () {
                         "status": "pending"
                     }),
                     success: function (data) {
-                        console.log(data);
-                        //fetchAllAppointments();
-                        alert("Work Permit saved successfully!");
+                         Swal.fire({
+                            icon: 'success',
+                            title: 'Saved!',
+                            text: 'Work Permit saved successfully!',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                       
                     },
                     error: function (error) {
                         console.error("Error saving appointment:", error);
@@ -182,8 +189,31 @@ $(document).ready(function () {
 
     });
 
-    // Handle Clear button click
-    $('#btnClearAppointment').click(function () {
-        $('form')[0].reset(); // clear all fields
+});
+
+document.getElementById("btnClearWorkPermit").addEventListener("click", function () {
+
+    // Clear all text inputs
+    document.querySelectorAll("#createWorkPermitMain input[type='text']").forEach(function(el){
+        el.value = "";
     });
+
+    // Clear date input
+    document.querySelectorAll("#createWorkPermitMain input[type='date']").forEach(function(el){
+        el.value = "";
+    });
+
+    // Reset dropdown
+    document.getElementById("workPermitType").selectedIndex = 0;
+
+    // Clear all textareas
+    document.querySelectorAll("#createWorkPermitMain textarea").forEach(function(el){
+        el.value = "";
+    });
+
+    // Uncheck all checkboxes
+    document.querySelectorAll("#createWorkPermitMain input[type='checkbox']").forEach(function(el){
+        el.checked = false;
+    });
+
 });

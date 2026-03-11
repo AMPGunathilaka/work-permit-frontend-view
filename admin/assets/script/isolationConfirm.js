@@ -24,7 +24,13 @@ function isolationConfirm() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function(response) {
-            alert(response);
+           Swal.fire({
+                icon: 'success',
+                title: 'Isolation Completed!',
+                text: 'Work Permit successfully Isolated.',
+                timer: 2000,
+                showConfirmButton: false
+            });  
             updateWorkPermitWhenIsolatedByAP(selectedWorkPermitId);
             var url  = "printPermit.html?workPermitId=" + selectedWorkPermitId;
              window.open(url, '_blank');

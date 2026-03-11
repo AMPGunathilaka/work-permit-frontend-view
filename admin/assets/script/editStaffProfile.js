@@ -47,7 +47,13 @@ function getStaffDetailsToUpdate() {
         // Include other fields to update as needed
       }),
       success: function(response) {
-        alert("Profile Update Successfully");
+        Swal.fire({
+            icon: 'success',
+            title: 'Updated!',
+            text: 'Profile Update Successfully.',
+            timer: 2000,
+            showConfirmButton: false
+        });
         
       },
       error: function(error) {

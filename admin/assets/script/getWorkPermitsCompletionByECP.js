@@ -45,14 +45,30 @@ function fetchAllCompletedWorkPermitsByECP() {
   }
 
 
-  $(document).on('click', '#confirmCompletionSap', function() {
-    var row = $(this).closest('tr');
-    var workPermitId = row.find('td:nth-child(2)').text(); 
-    if (confirm("Are you sure you want to complete this Work Permit?")) {
-        updateWorkPermitWhenCompletionBySAP(workPermitId); 
-    }
-  });
 
+   $(document).on('click', '#confirmCompletionSap', function() {
+
+    var row = $(this).closest('tr');
+    var workPermitId = row.find('td:nth-child(2)').text();
+
+    Swal.fire({
+        title: 'Confirm Completion',
+        text: "Are you sure you want to complete this Work Permit?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Complete it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            updateWorkPermitWhenCompletionBySAP(workPermitId); 
+        }
+
+    });
+
+});
 
   function updateWorkPermitWhenCompletionBySAP(selectedWorkPermitId) {
 
@@ -76,7 +92,14 @@ function fetchAllCompletedWorkPermitsByECP() {
                     completedByShiftInCharge: completedByShiftInCharge
                     // Include other fields to update as needed
                 }),
-                success: function(response) {    
+                success: function(response) {  
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Completed!',
+                        text: 'Work Permit successfully completed.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });  
                     fetchAllCompletedWorkPermitsByECP(); // Refresh table
                 },
                 error: function(error) {

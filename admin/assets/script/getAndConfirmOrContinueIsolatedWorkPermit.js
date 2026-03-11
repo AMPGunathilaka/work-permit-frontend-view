@@ -72,6 +72,12 @@ function fetchAllApIsolatedWorkPermits() {
             var jobCompletedDate = new Date();
             var completionNoteByEcp = $('#completionNoteByEcp').val();
             var workPermitId = $('#workPermitIdToConfirmCompletion').val();
+
+            // --- INPUT VALIDATION ---
+            if (completionNoteByEcp === "" ) {
+                alert("Please provide completion note");
+                return;
+            }
             
              $.ajax({
                 method: "PUT", 
@@ -84,10 +90,17 @@ function fetchAllApIsolatedWorkPermits() {
                     completedDate:jobCompletedDate
                     // Include other fields to update as needed
                 }),
-                success: function(response) {    
+                success: function(response) { 
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Completed!',
+                        text: 'Work Permit Completed By ECP!',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });    
+                    $('#confirmCompletionModal').modal('hide'); 
                     fetchAllApIsolatedWorkPermits();
-                    alert('successfully completed by ECP ')
-                    $('#confirmCompletionModal').modal('hide');
+                    
                 },
                 error: function(error) {
         
@@ -150,8 +163,14 @@ function updateWorkPermitWhenContinueBySAP() {
                 }),
                 success: function(response) {  
                     if(response=='updated')  {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Continued!',
+                            text: 'Work Permit Continued!',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });    
                         fetchAllApIsolatedWorkPermits();
-                        alert('successfully continue by SAP ')
                         $('#continuePermitModal').modal('hide');
                     }
                     if(response=='already continued'){
